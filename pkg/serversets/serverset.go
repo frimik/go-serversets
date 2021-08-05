@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/samuel/go-zookeeper/zk"
+	"github.com/go-zookeeper/zk"
 )
 
 // DefaultZKTimeout is the zookeeper timeout used if it is not overwritten.
