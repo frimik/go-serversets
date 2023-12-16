@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/samuel/go-zookeeper/zk"
+	"github.com/go-zookeeper/zk"
 )
 
 const (
@@ -55,11 +55,13 @@ func (ss *ServerSet) Watch() (*Watch, error) {
 
 	keys, watchEvents, err := watch.watch(connection)
 	if err != nil {
+		defer connection.Close()
 		return nil, err
 	}
 
 	watch.records, err = watch.updateRecords(connection, keys)
 	if err != nil {
+		defer connection.Close()
 		return nil, err
 	}
 
